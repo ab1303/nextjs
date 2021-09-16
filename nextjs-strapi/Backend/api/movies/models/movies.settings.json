@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "movies",
+  "info": {
+    "name": "Movies",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "release_date": {
+      "type": "date"
+    },
+    "poster": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "actors": {
+      "collection": "actors",
+      "via": "movies",
+      "dominant": true
+    },
+    "genre": {
+      "model": "genre"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    }
+  }
+}
