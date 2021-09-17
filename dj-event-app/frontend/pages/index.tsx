@@ -1,10 +1,10 @@
 import Link from "next/link";
 import Layout from "@/components/Layout";
-import EventItem, { EventProps } from "@/components/EventItem";
+import EventItem, { EventType } from "@/components/EventItem";
 import { API_URL } from "@/config/index";
 
 type Props = {
-  events: Array<EventProps>;
+  events: Array<EventType>;
 };
 
 export default function HomePage({ events }: Props) {

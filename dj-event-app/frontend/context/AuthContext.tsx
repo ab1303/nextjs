@@ -10,7 +10,7 @@ type LoginParams = {
 type User = {};
 type Error = {};
 
-type AuthContextType = {
+export type AuthContextType = {
   user: User | null;
   error: Error | null;
   register: (user: User) => void;
@@ -20,7 +20,7 @@ type AuthContextType = {
 
 type AuthProviderProps = {};
 
-const AuthContext = createContext<Partial<AuthContextType>>({});
+const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 
 export const AuthProvider: React.FC<PropsWithChildren<AuthProviderProps>> = ({
   children,

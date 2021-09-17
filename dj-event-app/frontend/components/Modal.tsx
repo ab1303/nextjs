@@ -1,0 +1,53 @@
+import { useState, useEffect, PropsWithChildren, FormEvent } from "react";
+import ReactDOM from "react-dom";
+import { FaTimes } from "react-icons/fa";
+import styles from "@/styles/Modal.module.css";
+
+type Props = {
+  show: boolean;
+  title: string;
+  onClose: () => void;
+};
+
+export default function Modal({
+  show,
+  onClose,
+  title,
+  children,
+}: PropsWithChildren<Props>) {
+  const [isBrowser, setIsBrowser] = useState(false);
+
+  useEffect(() => {
+    setIsBrowser(true);
+  }, [setIsBrowser]);
+
+  const handleClose = (e: FormEvent) => {
+    e.preventDefault();
+    onClose();
+  };
+
+  const modalContent = show ? (
+    <div className={styles.overlay}>
+      <div className={styles.modal}>
+        <div className={styles.header}>
+          <a href="#" onClick={handleClose}>
+            <FaTimes />
+          </a>
+        </div>
+        {title && <div>{title}</div>}
+        <div className={styles.body}>{children}</div>
+      </div>
+    </div>
+  ) : null;
+
+  if (isBrowser) {
+    return ReactDOM.createPortal(
+      modalContent,
+      document.getElementById("modal-root")!
+    );
+  } else {
+    return null;
+  }
+}
+
+// https://devrecipes.net/modal-component-with-next-js/

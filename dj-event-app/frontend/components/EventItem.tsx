@@ -2,17 +2,21 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "@/styles/EventItem.module.css";
 
-export type EventProps = {
+export type EventType = {
   id: number;
   image: any;
   name: string;
+  address: string;
+  performers: string;
+  description: string;
+  venue: string;
   date: Date;
   time: string;
   slug: string;
 };
 
 type Props = {
-  evt: EventProps;
+  evt: EventType;
 };
 
 export default function EventItem({ evt }: Props) {
