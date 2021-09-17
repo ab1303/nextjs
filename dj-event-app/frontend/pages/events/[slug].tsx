@@ -30,7 +30,7 @@ export default function EventPage({ evt }: Props) {
           <div className={styles.image}>
             <Image
               alt="event image"
-              src={evt.image.formats.medium.url}
+              src={evt.image.formats.thumbnail.url}
               width={960}
               height={600}
             />
