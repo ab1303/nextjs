@@ -31,7 +31,7 @@ jobs:
       with:
         push: true
         tags: strapiacr1303.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_1f9faee9d2914725aa9848076f50b067 }}/dj-event-app/strapi:${{ github.sha }}
-        file: ./Dockerfile
+        file: ./dj-event-app/backend/Dockerfile
 
   deploy:
     runs-on: ubuntu-latest
