@@ -30,8 +30,8 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_f5693199b35242f499a8989989916467 }}/appsvc/staticsite:${{ github.sha }}
-        file: ./Dockerfile
+        tags: mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_f5693199b35242f499a8989989916467 }}/appsvc/dj-event-app-backend:${{ github.sha }}
+        file: ./dj-event-app/backend/Dockerfile
 
   deploy:
     runs-on: ubuntu-latest
@@ -48,4 +48,4 @@ jobs:
         app-name: 'strapi-test'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_4e550d52e8e84a12bd906ffde36ca3a6 }}
-        images: 'mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_f5693199b35242f499a8989989916467 }}/appsvc/staticsite:${{ github.sha }}'
+        images: 'mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_f5693199b35242f499a8989989916467 }}/appsvc/dj-event-app-backend:${{ github.sha }}'
