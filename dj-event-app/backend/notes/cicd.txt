@@ -1,0 +1,16 @@
+AppSettings / Env Variables
+
+export DATABASE_HOST=strapi-test.mysql.database.azure.com
+export DATABASE_NAME=strapidb
+export DATABASE_USERNAME=
+export DATABASE_PASSWORD=
+
+
+AppSettings
+
+WEBSITES_PORT=1337
+
+
+Azure Cli 
+
+az webapp config appsettings list --name strapi-test --resource-group strapi

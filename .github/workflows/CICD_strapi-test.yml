@@ -26,14 +26,14 @@ jobs:
       uses: docker/login-action@v1
       with:
         registry: https://strapiacr1303.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_1f9faee9d2914725aa9848076f50b067 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_2eb651cedecb4c61a951929e8314b560 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername }}
+        password: ${{ secrets.AzureAppService_ContainerPassword }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: strapiacr1303.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_1f9faee9d2914725aa9848076f50b067 }}/dj-event-app/strapi:${{ github.sha }}
+        tags: strapiacr1303.azurecr.io/${{ secrets.AzureAppService_ContainerUsername }}/dj-event-app/strapi:${{ github.sha }}
         context: dj-event-app/backend
         file: dj-event-app/backend/Dockerfile
 
@@ -51,5 +51,5 @@ jobs:
       with:
         app-name: 'strapi-test'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_a8935a30505d4e37b225ca929fadad15 }}
-        images: 'strapiacr1303.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_1f9faee9d2914725aa9848076f50b067 }}/dj-event-app/strapi:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile }}
+        images: 'strapiacr1303.azurecr.io/${{ secrets.AzureAppService_ContainerUsername }}/dj-event-app/strapi:${{ github.sha }}'
